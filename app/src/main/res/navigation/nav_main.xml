@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/listview_fragment">
+
+    <fragment
+        android:id="@+id/listview_fragment"
+        android:name="com.thescore.avikd.nbateamviewer.nbateamsapi.ui.ListFragment"
+        android:label="@string/detailsview_title"
+        tools:layout="@layout/fragment_list_view">
+
+        <argument
+            android:name="typeId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+
+        <argument
+            android:name="themeName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+        <action
+            android:id="@+id/action_to_detail_fragment"
+            app:destination="@id/detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.thescore.avikd.nbateamviewer.nbateamsapi.ui.DetailsViewFragment"
+        android:label="@string/details_title"
+        tools:layout="@layout/fragment_details_view">
+
+        <argument
+            android:name="listItemData"
+            app:argType="com.thescore.avikd.nbateamviewer.nbateamsapi.data.Team" />
+    </fragment>
+
+</navigation>

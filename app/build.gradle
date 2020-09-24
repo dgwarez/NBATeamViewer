@@ -97,6 +97,7 @@ dependencies {
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.mockwebserverVersion"
     testImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockitoVersion"
 
     androidTestImplementation "androidx.test:core:$rootProject.testCoreVersion"
     androidTestImplementation "androidx.test:runner:$rootProject.testRunnerVersion"

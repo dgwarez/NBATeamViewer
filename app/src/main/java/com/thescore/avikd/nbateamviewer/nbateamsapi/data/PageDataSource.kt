@@ -3,9 +3,11 @@ package com.thescore.avikd.nbateamviewer.nbateamsapi.data
 import androidx.paging.PageKeyedDataSource
 import com.thescore.avikd.nbateamviewer.App
 import com.thescore.avikd.nbateamviewer.data.Result
+import com.thescore.avikd.nbateamviewer.testing.OpenForTesting
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import retrofit2.Response
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -40,19 +42,25 @@ class PageDataSource @Inject constructor(
         scope.launch(getJobErrorHandler()) {
             val response = dataSource.fetchSets(page, pageSize)
             if (response.status == Result.Status.SUCCESS) {
-                var results = response.data!!
-                App.sortMethod?.let {
-                    if (it == SortMethod.WINS) {
-                        results = results.sortedWith( compareByDescending {it.wins})
-                    } else if (it == SortMethod.LOSSES) {
-                        results = results.sortedWith( compareByDescending {it.losses})
-                    }
-                }
+                val results = sortReceivedData(response, App.sortMethod)
                 callback(results)
             } else if (response.status == Result.Status.ERROR) {
                 postError(response.message!!)
             }
         }
+    }
+
+    @OpenForTesting
+    fun sortReceivedData(response: Result<List<Team>>, sortMethod: SortMethod?): List<Team> {
+        var results = response.data!!
+        sortMethod?.let {
+            if (it == SortMethod.WINS) {
+                results = results.sortedWith( compareByDescending {it.wins})
+            } else if (it == SortMethod.LOSSES) {
+                results = results.sortedWith( compareByDescending {it.losses})
+            }
+        }
+        return results
     }
 
     private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->

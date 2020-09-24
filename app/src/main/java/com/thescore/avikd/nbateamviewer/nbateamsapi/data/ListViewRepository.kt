@@ -22,7 +22,7 @@ class ListViewRepository @Inject constructor(private val NBATeamsAPIRemoteDataSo
         if (connectivityAvailable) observeRemotePagedSets(coroutineScope)
         else observeRemotePagedSets(coroutineScope)//Can add offline support here
 
-    private fun observeRemotePagedSets(ioCoroutineScope: CoroutineScope)
+    fun observeRemotePagedSets(ioCoroutineScope: CoroutineScope)
             : LiveData<PagedList<Team>> {
         val dataSourceFactory = PageDataSourceFactory(NBATeamsAPIRemoteDataSource, ioCoroutineScope)
         return LivePagedListBuilder(

@@ -1,16 +1,10 @@
 <resources>
-
-    <!-- Resources that do not require translation -->
     <string name="app_name" translatable="false">NBA Team Viewer</string>
     <string name="navigation_drawer_header_title" translatable="false">NBA Team Viewer</string>
-
-    <!-- Translatable resources -->
-    <string name="themes_title">Browse News</string>
     <string name="detailsview_title">NBA Team Viewer</string>
     <string name="details_title">Team Details</string>
     <string name="navigation_drawer_header_content_description">Navigation drawer header logo</string>
     <string name="description_text">NBA Team List</string>
-
     <string name="external_link_label">External Link</string>
     <string name="position_label">Position:</string>
     <string name="number_label">Number:</string>
@@ -18,8 +12,6 @@
     <string name="wins_label">Wins: %1$s</string>
     <string name="losses_label">Losses: %1$s</string>
     <string name="team_roster_title_label">Team Roster</string>
-
-    <!-- Accessibility -->
-    <string name="a11y_item_image">Kotlin News Image</string>
-
+    <string name="menu_sort_by_wins">Sort by Wins</string>
+    <string name="menu_sort_by_losses">Sort by Losses</string>
 </resources>

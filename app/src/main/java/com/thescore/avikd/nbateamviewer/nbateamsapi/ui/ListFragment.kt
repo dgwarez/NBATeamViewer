@@ -84,7 +84,7 @@ class ListFragment : Fragment(), Injectable {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_navigation, menu)
+        inflater.inflate(R.menu.menu_sorting, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
